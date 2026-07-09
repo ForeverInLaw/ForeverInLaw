@@ -207,18 +207,6 @@ const sergei = {
 
 <br/>
 
-<!-- =================================================================== -->
-<!--                          CONTACT                                    -->
-<!-- =================================================================== -->
-
-## ▍ contact
-
-- 🌐 web — [zaebal.dev](https://zaebal.dev)
-- ✉️ mail — [x@c0.md](mailto:x@c0.md)
-- 🐙 github — [@ForeverInLaw](https://github.com/ForeverInLaw)
-
-<br/>
-
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:22D3EE,50:7C3AED,100:0d1117&height=110&section=footer" width="100%" />
 </div>
