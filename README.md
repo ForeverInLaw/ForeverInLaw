@@ -15,6 +15,7 @@
 <div align="center">
 
   <a href="https://zaebal.dev"><img src="https://img.shields.io/badge/zaebal.dev-7C3AED?style=for-the-badge&logo=hyperledger&logoColor=white&labelColor=0d1117" /></a>
+  <a href="https://t.me/nevermorelove"><img src="https://img.shields.io/badge/telegram-%40nevermorelove-22D3EE?style=for-the-badge&logo=telegram&logoColor=white&labelColor=0d1117" /></a>
   <a href="mailto:x@c0.md"><img src="https://img.shields.io/badge/mail-x%40c0.md-22D3EE?style=for-the-badge&logo=maildotru&logoColor=white&labelColor=0d1117" /></a>
   <a href="https://github.com/ForeverInLaw?tab=followers"><img src="https://img.shields.io/github/followers/ForeverInLaw?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117&color=7C3AED&label=followers" /></a>
   <img src="https://komarev.com/ghpvc/?username=ForeverInLaw&style=for-the-badge&color=22D3EE&label=visitors&labelColor=0d1117" />
@@ -35,9 +36,10 @@ $ whoami --verbose
 const sergei = {
   alias:     "ForeverInLaw",
   role:      "engineer / builder / system plumber",
+  org:       "redstone.md — co-founder, open-source R&D (P2P networking, AI moderation)",
   stack:     ["Go", "TypeScript", "Python", "Rust-curious"],
-  domains:   ["ai-agents", "edge & proxies", "telegram bots", "trading infra", "devtools"],
-  shipping:  ["moss", "mosh", "shield", "nimbus", "whispertocode", "corpcoreai"],
+  domains:   ["ai-agents", "e2ee & security", "edge & proxies", "telegram bots", "devtools"],
+  shipping:  ["moss", "mosh", "shield", "screenstyler", "whispertocode", "corpcoreai"],
   beliefs:   [
     "code that ships > code that's elegant",
     "private repos > demo repos",
@@ -55,8 +57,10 @@ const sergei = {
 
 ## ▍ what I build
 
-- **AI agents & operator tooling** — multi-model routing, trace pipelines, Telegram-native UX, eval loops
-- **Edge & networking** — GeoDNS, TCP/UDP reverse proxies, agent meshes, traffic shaping
+- **AI agents & operator tooling** — multi-model routing, RAG pipelines (LangChain, FAISS), Telegram-native UX, eval loops
+- **Security & E2EE** — Noise Protocol, MLS/OpenMLS, white-box security audits, authn/authz hardening
+- **Edge & networking** — P2P meshes, NAT traversal, GeoDNS, TCP/UDP reverse proxies, traffic shaping
+- **Multi-tenant SaaS** — Postgres row-level security for tenant isolation, offline-first PWAs, RBAC
 - **Bots & automation** — Discord, Telegram, Steam, Spotify, escrow, support, "do-this-for-me" daemons
 - **Infra & launchers** — config sync, restart APIs, health gateways, deploy pipelines for tiny ARM boxes
 - **Side-quests** — game modding, scrapers, downloaders, anything that scratches an itch in under a weekend
@@ -74,24 +78,24 @@ const sergei = {
     <td width="33%" valign="top">
       <h3>🌿 MOSS</h3>
       <sub>Go · P2P · CGO · Noise</sub><br/><br/>
-      <a href="https://github.com/redstone-md/moss">redstone-md/moss</a> — embeddable P2P mesh core. Tracker bootstrap (BEP 15/3), Noise XX encrypted transport, topic pubsub with peer scoring, NAT profiling, relay primitives. Shipped as a C-shared library with FFI examples in C/C++/C#/Python/Rust.
+      <a href="https://github.com/redstone-md/moss">redstone-md/moss</a> — embeddable P2P mesh core, ~25k LOC Go. Noise XX/IK encrypted transport, topic pubsub with peer scoring, NAT traversal (hole punching, STUN, UPnP, relay fallback). Shipped as a C-shared library with FFI bindings for C/C++/C#/Python/Rust. ~0.86 test-to-source ratio: unit, integration, fuzz, multi-node churn in CI.
     </td>
     <td width="33%" valign="top">
       <h3>💬 MOSH</h3>
       <sub>TS · React · Tauri · Rust</sub><br/><br/>
-      <a href="https://github.com/redstone-md/mosh">redstone-md/mosh</a> — standalone desktop chat client for the MOSS runtime. React + Vite + TanStack Query frontend, Rust/Tauri v2 backend with live <code>libmoss</code> lifecycle, <code>mosh://</code> deep links, bundled per-platform shared runtime.
+      <a href="https://github.com/redstone-md/mosh">redstone-md/mosh</a> — desktop E2EE messenger on the MOSS runtime. OpenMLS (RFC 9420) group encryption, encrypted voice calls (AES-GCM-sealed Opus), React + Tauri v2/Rust backend with live <code>libmoss</code> lifecycle and a connection state machine that recovers after failed NAT punches.
     </td>
     <td width="33%" valign="top">
       <h3>🛡️ Shield</h3>
       <sub>Go · Telegram · LLM moderation</sub><br/><br/>
-      <a href="https://github.com/redstone-md/shield">redstone-md/shield</a> — self-hosted Telegram anti-spam. Fast-path heuristics (Bayes, similarity, stop-words, CAS, emoji, meta, duplicates) + slow-path OpenAI/Gemini vision &amp; text escalation, policy engine, Lua plugins, SQLite/Postgres.
+      <a href="https://github.com/redstone-md/shield">redstone-md/shield</a> — self-hosted Telegram moderation platform, 240+ commits on top of upstream tg-spam. Fast-path heuristics (Bayes, similarity, CAS) + slow-path LLM/Vision escalation (OpenAI, Gemini) behind circuit breakers and token budgets. Multi-tenant control plane, live-versioned rule sets, Lua plugins, SQLite/Postgres.
     </td>
   </tr>
   <tr>
     <td width="33%" valign="top">
-      <h3>🌐 Nimbus</h3>
-      <sub>JS · edge · networking</sub><br/><br/>
-      <a href="https://github.com/ForeverInLaw/Nimbus">Nimbus</a> — scalable agent system with GeoDNS and TCP/UDP traffic forwarding. Plumbing nobody notices until it isn't there.
+      <h3>📸 ScreenStyler</h3>
+      <sub>TS · Next.js · local-first</sub><br/><br/>
+      <a href="https://github.com/ForeverInLaw/screenstyler">screenstyler</a> — browser-based screenshot editor &amp; device mockup tool. Two modes: zero-cloud local-first (projects in IndexedDB) or cloud (Neon Postgres, Cloudflare R2, passwordless auth). Undo/redo history, Docker image that self-applies DB migrations, Vitest + Playwright suites.
     </td>
     <td width="33%" valign="top">
       <h3>🎙️ whispertocode</h3>
@@ -121,19 +125,19 @@ const sergei = {
 <table>
 <tr>
 <td align="center" width="120"><b>languages</b></td>
-<td><img src="https://skillicons.dev/icons?i=go,ts,js,python,rust,cs,java,bash" /></td>
+<td><img src="https://skillicons.dev/icons?i=go,ts,js,python,rust,cs,bash" /></td>
 </tr>
 <tr>
 <td align="center" width="120"><b>backend</b></td>
-<td><img src="https://skillicons.dev/icons?i=nodejs,bun,fastapi,nestjs,express,graphql" /></td>
+<td><img src="https://skillicons.dev/icons?i=nodejs,bun,fastapi,nestjs,express,graphql,tauri" /></td>
 </tr>
 <tr>
 <td align="center" width="120"><b>frontend</b></td>
-<td><img src="https://skillicons.dev/icons?i=react,nextjs,vite,tailwind,svelte,vue" /></td>
+<td><img src="https://skillicons.dev/icons?i=react,nextjs,vite,tailwind,threejs" /></td>
 </tr>
 <tr>
 <td align="center" width="120"><b>ai / ml</b></td>
-<td><img src="https://skillicons.dev/icons?i=pytorch,tensorflow,sklearn,opencv" /></td>
+<td><img src="https://skillicons.dev/icons?i=pytorch,sklearn,opencv" /></td>
 </tr>
 <tr>
 <td align="center" width="120"><b>data</b></td>
@@ -141,7 +145,7 @@ const sergei = {
 </tr>
 <tr>
 <td align="center" width="120"><b>infra</b></td>
-<td><img src="https://skillicons.dev/icons?i=docker,kubernetes,nginx,linux,cloudflare,git,githubactions,terraform,prometheus,grafana" /></td>
+<td><img src="https://skillicons.dev/icons?i=docker,nginx,linux,cloudflare,vercel,aws,git,githubactions,prometheus,grafana" /></td>
 </tr>
 <tr>
 <td align="center" width="120"><b>daily driver</b></td>
@@ -177,20 +181,6 @@ const sergei = {
 <a href="https://github.com/ForeverInLaw">
   <img width="98%" src="https://github-readme-activity-graph.vercel.app/graph?username=ForeverInLaw&bg_color=0D1117&color=22D3EE&line=7C3AED&point=ffffff&area=true&area_color=7C3AED&hide_border=true&custom_title=contribution%20pulse" />
 </a>
-</div>
-
-<br/>
-
-<!-- =================================================================== -->
-<!--                          TROPHIES                                   -->
-<!-- =================================================================== -->
-
-<div align="center">
-
-<a href="https://github.com/ryo-ma/github-profile-trophy">
-  <img src="https://github-profile-trophy.vercel.app/?username=ForeverInLaw&theme=tokyonight&no-frame=true&no-bg=true&margin-w=8&column=7" />
-</a>
-
 </div>
 
 <br/>
