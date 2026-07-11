@@ -75,37 +75,74 @@ const sergei = {
 
 <table>
   <tr>
-    <td width="33%" valign="top">
-      <h3>🌿 MOSS</h3>
-      <sub>Go · P2P · CGO · Noise</sub><br/><br/>
-      <a href="https://github.com/redstone-md/moss">redstone-md/moss</a> — embeddable P2P mesh core, ~25k LOC Go. Noise XX/IK encrypted transport, topic pubsub with peer scoring, NAT traversal (hole punching, STUN, UPnP, relay fallback). Shipped as a C-shared library with FFI bindings for C/C++/C#/Python/Rust. ~0.86 test-to-source ratio: unit, integration, fuzz, multi-node churn in CI.
+    <td width="50%" valign="top">
+      <h3 align="center">🌿 <a href="https://github.com/redstone-md/moss">moss</a></h3>
+      <p align="center">
+        <img src="https://img.shields.io/badge/Go-0d1117?style=flat-square&logo=go&logoColor=22D3EE" />
+        <img src="https://img.shields.io/badge/CGO%20%2F%20FFI-0d1117?style=flat-square&logo=c&logoColor=7C3AED" />
+        <img src="https://img.shields.io/badge/Noise%20Protocol-0d1117?style=flat-square&logo=wireguard&logoColor=22D3EE" />
+        <img src="https://img.shields.io/badge/P2P-0d1117?style=flat-square&logo=torproject&logoColor=7C3AED" />
+      </p>
+      <p>Embeddable P2P mesh core. Noise XX/IK encrypted transport, topic pubsub with peer scoring, NAT traversal (hole punching, STUN, UPnP, relay fallback). Ships as a C shared library with bindings for C/C++/C#/Python/Rust.</p>
+      <p align="center"><b>~25k LOC · ~0.86 test-to-source · fuzz + multi-node churn in CI</b></p>
     </td>
-    <td width="33%" valign="top">
-      <h3>💬 MOSH</h3>
-      <sub>TS · React · Tauri · Rust</sub><br/><br/>
-      <a href="https://github.com/redstone-md/mosh">redstone-md/mosh</a> — desktop E2EE messenger on the MOSS runtime. OpenMLS (RFC 9420) group encryption, encrypted voice calls (AES-GCM-sealed Opus), React + Tauri v2/Rust backend with live <code>libmoss</code> lifecycle and a connection state machine that recovers after failed NAT punches.
-    </td>
-    <td width="33%" valign="top">
-      <h3>🛡️ Shield</h3>
-      <sub>Go · Telegram · LLM moderation</sub><br/><br/>
-      <a href="https://github.com/redstone-md/shield">redstone-md/shield</a> — self-hosted Telegram moderation platform, 240+ commits on top of upstream tg-spam. Fast-path heuristics (Bayes, similarity, CAS) + slow-path LLM/Vision escalation (OpenAI, Gemini) behind circuit breakers and token budgets. Multi-tenant control plane, live-versioned rule sets, Lua plugins, SQLite/Postgres.
+    <td width="50%" valign="top">
+      <h3 align="center">💬 <a href="https://github.com/redstone-md/mosh">mosh</a></h3>
+      <p align="center">
+        <img src="https://img.shields.io/badge/Rust-0d1117?style=flat-square&logo=rust&logoColor=22D3EE" />
+        <img src="https://img.shields.io/badge/Tauri%202-0d1117?style=flat-square&logo=tauri&logoColor=7C3AED" />
+        <img src="https://img.shields.io/badge/React-0d1117?style=flat-square&logo=react&logoColor=22D3EE" />
+        <img src="https://img.shields.io/badge/OpenMLS-0d1117?style=flat-square&logo=letsencrypt&logoColor=7C3AED" />
+      </p>
+      <p>Desktop E2EE messenger on the moss runtime. OpenMLS (RFC 9420) group encryption, encrypted voice calls (AES-GCM-sealed Opus), live <code>libmoss</code> lifecycle, connection state machine that recovers after failed NAT punches.</p>
+      <p align="center"><b>E2EE text + voice · <code>mosh://</code> deep links · per-platform bundled runtime</b></p>
     </td>
   </tr>
   <tr>
-    <td width="33%" valign="top">
-      <h3>📸 ScreenStyler</h3>
-      <sub>TS · Next.js · local-first</sub><br/><br/>
-      <a href="https://github.com/ForeverInLaw/screenstyler">screenstyler</a> — browser-based screenshot editor &amp; device mockup tool. Two modes: zero-cloud local-first (projects in IndexedDB) or cloud (Neon Postgres, Cloudflare R2, passwordless auth). Undo/redo history, Docker image that self-applies DB migrations, Vitest + Playwright suites.
+    <td width="50%" valign="top">
+      <h3 align="center">🛡️ <a href="https://github.com/redstone-md/shield">shield</a></h3>
+      <p align="center">
+        <img src="https://img.shields.io/badge/Go-0d1117?style=flat-square&logo=go&logoColor=22D3EE" />
+        <img src="https://img.shields.io/badge/Telegram-0d1117?style=flat-square&logo=telegram&logoColor=7C3AED" />
+        <img src="https://img.shields.io/badge/LLM%20%2B%20Vision-0d1117?style=flat-square&logo=openai&logoColor=22D3EE" />
+        <img src="https://img.shields.io/badge/Lua-0d1117?style=flat-square&logo=lua&logoColor=7C3AED" />
+      </p>
+      <p>Self-hosted Telegram moderation platform. Fast-path heuristics (Bayes, similarity, CAS) + slow-path LLM/Vision escalation (OpenAI, Gemini) behind circuit breakers and token budgets. Multi-tenant control plane, live-versioned rule sets, Lua plugins.</p>
+      <p align="center"><b>240+ commits on top of upstream tg-spam</b></p>
     </td>
-    <td width="33%" valign="top">
-      <h3>🎙️ whispertocode</h3>
-      <sub>Python · ASR · devtools</sub><br/><br/>
-      <a href="https://github.com/ForeverInLaw/whispertocode">whispertocode</a> — speech → working code, end to end. Typing is slower than thinking out loud.
+    <td width="50%" valign="top">
+      <h3 align="center">📸 <a href="https://github.com/ForeverInLaw/screenstyler">screenstyler</a></h3>
+      <p align="center">
+        <img src="https://img.shields.io/badge/TypeScript-0d1117?style=flat-square&logo=typescript&logoColor=22D3EE" />
+        <img src="https://img.shields.io/badge/Next.js-0d1117?style=flat-square&logo=nextdotjs&logoColor=7C3AED" />
+        <img src="https://img.shields.io/badge/IndexedDB-0d1117?style=flat-square&logo=googlechrome&logoColor=22D3EE" />
+        <img src="https://img.shields.io/badge/Neon%20%2B%20R2-0d1117?style=flat-square&logo=cloudflare&logoColor=7C3AED" />
+      </p>
+      <p>Browser-based screenshot editor &amp; device mockup tool. Two modes: zero-cloud local-first (projects in IndexedDB) or cloud (Neon Postgres, Cloudflare R2, passwordless auth). Undo/redo history, Docker image that self-applies DB migrations.</p>
+      <p align="center"><b>local-first by default · Vitest + Playwright suites</b></p>
     </td>
-    <td width="33%" valign="top">
-      <h3>🤖 CorpCoreAI</h3>
-      <sub>TS · Next.js · Telegram WebApp · LLM</sub><br/><br/>
-      <a href="https://github.com/ForeverInLaw/CorpCoreAI">CorpCoreAI</a> — Telegram bot + Telegram WebApp (Next.js) for corporate task flow. NL task intake, NVIDIA Minimax for titling/subtasks, Postgres via Prisma, role-scoped UI, hourly reminder scheduler with day-of/overdue/manager-escalation alerts.
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">🎙️ <a href="https://github.com/ForeverInLaw/whispertocode">whispertocode</a></h3>
+      <p align="center">
+        <img src="https://img.shields.io/badge/Python-0d1117?style=flat-square&logo=python&logoColor=22D3EE" />
+        <img src="https://img.shields.io/badge/PySide6-0d1117?style=flat-square&logo=qt&logoColor=7C3AED" />
+        <img src="https://img.shields.io/badge/NVIDIA%20Riva-0d1117?style=flat-square&logo=nvidia&logoColor=22D3EE" />
+      </p>
+      <p>Cross-platform push-to-talk dictation. Global hotkey capture, NVIDIA Riva Whisper transcription typed straight into any focused input, optional streaming LLM cleanup pass. Typing is slower than thinking out loud.</p>
+      <p align="center"><b>ships as a standalone binary</b></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3 align="center">🤖 <a href="https://github.com/ForeverInLaw/CorpCoreAI">CorpCoreAI</a></h3>
+      <p align="center">
+        <img src="https://img.shields.io/badge/TypeScript-0d1117?style=flat-square&logo=typescript&logoColor=22D3EE" />
+        <img src="https://img.shields.io/badge/Next.js-0d1117?style=flat-square&logo=nextdotjs&logoColor=7C3AED" />
+        <img src="https://img.shields.io/badge/Telegram%20WebApp-0d1117?style=flat-square&logo=telegram&logoColor=22D3EE" />
+        <img src="https://img.shields.io/badge/Prisma-0d1117?style=flat-square&logo=prisma&logoColor=7C3AED" />
+      </p>
+      <p>Telegram bot + WebApp (Next.js) for corporate task flow. NL task intake, LLM-generated titles/subtasks, Postgres via Prisma, role-scoped UI, hourly reminder scheduler with day-of / overdue / manager-escalation alerts.</p>
+      <p align="center"><b>bot + WebApp in one deploy</b></p>
     </td>
   </tr>
 </table>
