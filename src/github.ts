@@ -25,16 +25,19 @@ export interface Stats {
   hours: readonly number[]
 }
 
-interface PublicContributions {
-  user: {
-    contributionsCollection: {
-      totalCommitContributions: number
-      totalIssueContributions: number
-      totalPullRequestContributions: number
-      totalPullRequestReviewContributions: number
-      totalRepositoryContributions: number
-    }
-  }
+interface RepoContributions {
+  repository: { isPrivate: boolean }
+  contributions: { totalCount: number }
+}
+
+type ContributionKind =
+  | 'commitContributionsByRepository'
+  | 'issueContributionsByRepository'
+  | 'pullRequestContributionsByRepository'
+  | 'pullRequestReviewContributionsByRepository'
+
+interface ContributionsResponse {
+  user: { contributionsCollection: Record<ContributionKind, RepoContributions[]> }
 }
 
 const CALENDAR_URL = `https://github.com/users/${LOGIN}/contributions`
@@ -69,22 +72,29 @@ async function fetchYearTotal(year: number): Promise<number> {
   return Number(match[1].replaceAll(',', ''))
 }
 
+/**
+ * Summed per repository because the plain totals depend on the token: one with the
+ * `user` scope counts its owner's private commits as well, the Actions token does not.
+ */
 async function fetchPublicTotal(octokit: Octokit, year: number): Promise<number> {
-  const { user } = await octokit.graphql<PublicContributions>(
+  const perRepo = 'maxRepositories: 100) { repository { isPrivate } contributions { totalCount } }'
+  const { user } = await octokit.graphql<ContributionsResponse>(
     `query($login: String!, $from: DateTime!, $to: DateTime!) {
       user(login: $login) {
         contributionsCollection(from: $from, to: $to) {
-          totalCommitContributions
-          totalIssueContributions
-          totalPullRequestContributions
-          totalPullRequestReviewContributions
-          totalRepositoryContributions
+          commitContributionsByRepository(${perRepo}
+          issueContributionsByRepository(${perRepo}
+          pullRequestContributionsByRepository(${perRepo}
+          pullRequestReviewContributionsByRepository(${perRepo}
         }
       }
     }`,
     { login: LOGIN, from: `${year}-01-01T00:00:00Z`, to: `${year}-12-31T23:59:59Z` },
   )
-  return Object.values(user.contributionsCollection).reduce((sum, n) => sum + n, 0)
+  return Object.values(user.contributionsCollection)
+    .flat()
+    .filter(({ repository }) => !repository.isPrivate)
+    .reduce((sum, { contributions }) => sum + contributions.totalCount, 0)
 }
 
 async function fetchCommitDates(octokit: Octokit, track: Track): Promise<Date[]> {
