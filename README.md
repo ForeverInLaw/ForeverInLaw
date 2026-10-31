@@ -9,7 +9,7 @@
 <a href="https://github.com/redstone-md/flucord"><picture><source media="(prefers-color-scheme: light)" srcset="assets/track-flucord-light.svg" /><img src="assets/track-flucord-dark.svg" alt="3. flucord: Native Discord client in Flutter, no WebView" width="100%" /></picture></a>
 <a href="https://github.com/redstone-md/moss"><picture><source media="(prefers-color-scheme: light)" srcset="assets/track-moss-light.svg" /><img src="assets/track-moss-dark.svg" alt="4. moss: Embeddable P2P mesh core in Go" width="100%" /></picture></a>
 <a href="https://github.com/redstone-md/g3"><picture><source media="(prefers-color-scheme: light)" srcset="assets/track-g3-light.svg" /><img src="assets/track-g3-dark.svg" alt="5. g3: S3-compatible storage on Google Drive" width="100%" /></picture></a>
-<picture><source media="(prefers-color-scheme: light)" srcset="assets/side-c-light.svg" /><img src="assets/side-c-dark.svg" alt="Side C, closed source. 52:41 · 3.2k private contributions in 2026" width="100%" /></picture>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/side-c-light.svg" /><img src="assets/side-c-dark.svg" alt="Side C, closed source. 3:02 · 182 private contributions in 2026" width="100%" /></picture>
 <a href="https://redstone.md/projects/launch-vpn"><picture><source media="(prefers-color-scheme: light)" srcset="assets/closed-launch-vpn-light.svg" /><img src="assets/closed-launch-vpn-dark.svg" alt="Launch VPN: Subscriber portal with payments, promo codes and device controls" width="100%" /></picture></a>
 <a href="https://redstone.md/projects/customerai"><picture><source media="(prefers-color-scheme: light)" srcset="assets/closed-customerai-light.svg" /><img src="assets/closed-customerai-dark.svg" alt="CustomerAI: Visual editor for AI support flows, with handover to a human" width="100%" /></picture></a>
 <a href="https://redstone.md/projects/balansear"><picture><source media="(prefers-color-scheme: light)" srcset="assets/closed-balansear-light.svg" /><img src="assets/closed-balansear-dark.svg" alt="Balansear: Authoritative DNS that routes by the client's ASN and location" width="100%" /></picture></a>
@@ -20,6 +20,10 @@
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/discography-light.svg" /><img src="assets/discography-dark.svg" alt="Discography: 2022: 72, 2023: 45, 2024: 27, 2025: 963, 2026: 5243" width="100%" /></picture>
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/outtakes-light.svg" /><img src="assets/outtakes-dark.svg" alt="Outtakes: fix(persistence): stop the test suite from destroying the real DEK; docs(changelog): stop claiming the telemetry default changed in 0.6.9; fix(core): a send the relay never tried is re-routed, not failed; feat(dm): one moss node, a proven status, and a text that never fails" width="100%" /></picture>
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/credits-light.svg" /><img src="assets/credits-dark.svg" alt="Written and produced by Sergei. moss, flucord and g3 with Andy (Rxflex). Guest appearance on qeeqbox/social-analyzer (24.4k stars), for one package-lock.json." width="100%" /></picture>
+</p>
+
+<p>
+<a href="https://zaebal.dev"><picture><source media="(prefers-color-scheme: light)" srcset="https://spotify-now-playing.foreverinlaw.workers.dev/now-playing.svg?theme=light" /><img src="https://spotify-now-playing.foreverinlaw.workers.dev/now-playing.svg" alt="What Sergei is listening to on Spotify" width="100%" /></picture></a>
 </p>
 
 [zaebal.dev](https://zaebal.dev) · [@nevermorelove](https://t.me/nevermorelove) · [x@c0.md](mailto:x@c0.md)
