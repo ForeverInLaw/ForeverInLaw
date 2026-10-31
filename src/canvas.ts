@@ -13,13 +13,16 @@ export interface Run {
   gap?: number
 }
 
+export interface Dot {
+  x: number
+  y: number
+  r: number
+}
+
 const require = createRequire(import.meta.url)
 
 const FONTS: Record<FontRole, { file: string; axes?: Record<string, number> }> = {
-  display: {
-    file: '@fontsource-variable/archivo/files/archivo-latin-standard-normal.woff2',
-    axes: { wght: 800, wdth: 125 },
-  },
+  display: { file: '@fontsource/anton/files/anton-latin-400-normal.woff2' },
   body: {
     file: '@fontsource-variable/archivo/files/archivo-latin-standard-normal.woff2',
     axes: { wght: 400, wdth: 100 },
@@ -61,8 +64,9 @@ export class Canvas {
     return this
   }
 
-  circle(cx: number, cy: number, r: number, attrs: string): this {
-    this.body.push(`<circle cx="${cx}" cy="${cy}" r="${r}" ${attrs}/>`)
+  dots(dots: readonly Dot[], fill: string): this {
+    const circles = dots.map(({ x, y, r }) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')
+    this.body.push(`<g fill="${fill}">${circles}</g>`)
     return this
   }
 

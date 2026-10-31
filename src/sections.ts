@@ -1,4 +1,5 @@
 import { Canvas } from './canvas.ts'
+import { AVATAR_LEVELS, AVATAR_SIZE } from './halftone.ts'
 import {
   CREDITS,
   NIGHT_HOURS,
@@ -25,24 +26,30 @@ interface Theme {
 
 const THEMES: Record<ThemeName, Theme> = {
   dark: {
-    fg: '#F4EFF8',
-    soft: '#D9CFE6',
-    muted: '#A094B0',
-    hairline: '#2A2433',
-    accent: '#F492F0',
-    accentText: '#F492F0',
-    dim: '#4A3F58',
+    fg: '#F2F0EB',
+    soft: '#D6D3CC',
+    muted: '#9A978F',
+    hairline: '#2B2B2E',
+    accent: '#8EA6FF',
+    accentText: '#8EA6FF',
+    dim: '#343A4C',
   },
   light: {
-    fg: '#1D1421',
-    soft: '#3E3346',
-    muted: '#6D6277',
-    hairline: '#E2DCE7',
-    accent: '#D04EC5',
-    accentText: '#8F2784',
-    dim: '#D8CFE0',
+    fg: '#141210',
+    soft: '#3B3834',
+    muted: '#6E6A63',
+    hairline: '#E2DFD8',
+    accent: '#1B3FD6',
+    accentText: '#1B3FD6',
+    dim: '#CFCBC2',
   },
 }
+
+const PAPER = '#E8E2D2'
+const INK = '#141210'
+const COBALT = '#1B3FD6'
+/** The avatar's dark border would print as a hard vertical bar. */
+const AVATAR_FRAME_COLUMNS = 3
 
 const WIDTH = 840
 const HEAD_HEIGHT = 112
@@ -75,7 +82,7 @@ function recordingPeriod(first: Date, last: Date, now: Date): string {
 }
 
 function heading(canvas: Canvas, t: Theme, label: string, right?: string): Canvas {
-  canvas.text(0, HEAD_HEIGHT - 20, { text: label, font: 'mono', size: 15, fill: t.accentText })
+  canvas.text(0, HEAD_HEIGHT - 20, { text: label, font: 'display', size: 20, fill: t.accentText })
   if (right) {
     canvas.text(WIDTH, HEAD_HEIGHT - 20, { text: right, font: 'mono', size: 14, fill: t.muted }, 'end')
   }
@@ -83,42 +90,29 @@ function heading(canvas: Canvas, t: Theme, label: string, right?: string): Canva
 }
 
 function renderCover(stats: Stats): Canvas {
-  const canvas = new Canvas(WIDTH, 520, `Sergei, ForeverInLaw LP, runtime ${runtime(stats.runtimeSeconds)}`)
-  const cx = 690
-  const cy = 430
-  const outer = 262
-  const label = 76
-  const ink = '#1E1030'
+  const height = 520
+  const cell = height / AVATAR_SIZE
+  const left = WIDTH - height
+  const dots = [...AVATAR_LEVELS].flatMap((level, i) => {
+    const column = i % AVATAR_SIZE
+    const r = ((9 - Number(level)) / 9) * cell * 0.66
+    if (r <= 0.5 || column < AVATAR_FRAME_COLUMNS) return []
+    const x = left + column * cell + cell / 2
+    const y = Math.floor(i / AVATAR_SIZE) * cell + cell / 2
+    return [{ x: +x.toFixed(1), y: +y.toFixed(1), r: +r.toFixed(2) }]
+  })
 
-  canvas
-    .rect(0, 0, WIDTH, 520, ink)
-    .circle(cx, cy, outer + 6, 'fill="#07050B"')
-
-  const usable = outer - label - 12
-  let radius = outer
-  for (const { commits } of stats.tracks.values()) {
-    const band = Math.max(5, (usable * commits) / stats.runtimeSeconds)
-    for (let r = radius; r > radius - band; r -= 2.4) {
-      canvas.circle(cx, cy, r, 'fill="none" stroke="#3A3048" stroke-width=".7"')
-    }
-    radius -= band + 3
-  }
-
-  canvas
-    .circle(cx, cy, label, 'fill="#F492F0"')
-    .circle(cx, cy, 5, 'fill="#07050B"')
-    .text(cx, cy - 28, { text: 'redstone.md', font: 'mono', size: 13, fill: ink }, 'middle')
-    .text(cx, cy + 40, { text: 'RS-2018', font: 'mono', size: 13, fill: ink }, 'middle')
-    .text(56, 148, { text: 'Sergei', font: 'display', size: 104, fill: '#F492F0' })
-    .text(56, 194, { text: 'ForeverInLaw LP', font: 'body', size: 21, fill: '#D9CFE6' })
-    .text(56, 440, { text: 'Label: redstone.md', font: 'mono', size: 15, fill: '#B3A6C2' })
-    .text(56, 468, {
-      text: `${runtime(stats.runtimeSeconds)} · 1 commit = 1 second`,
-      font: 'mono',
-      size: 15,
-      fill: '#B3A6C2',
+  return new Canvas(WIDTH, height, `Sergei, ForeverInLaw LP, runtime ${runtime(stats.runtimeSeconds)}`)
+    .rect(0, 0, WIDTH, height, PAPER)
+    .dots(dots, INK)
+    .text(20, 500, { text: 'SERGEI', font: 'display', size: 212, fill: COBALT })
+    .text(28, 56, { text: 'ForeverInLaw LP', font: 'display', size: 30, fill: INK })
+    .text(28, 86, {
+      text: `redstone.md, ${runtime(stats.runtimeSeconds)}`,
+      font: 'display',
+      size: 18,
+      fill: INK,
     })
-  return canvas
 }
 
 function renderTrack(track: Track, number: number, stats: Stats, now: Date, t: Theme): Canvas {
@@ -130,7 +124,7 @@ function renderTrack(track: Track, number: number, stats: Stats, now: Date, t: T
     .rect(0, 0, WIDTH, 1, t.hairline)
     .text(0, 70, { text: String(number), font: 'mono', size: 15, fill: t.muted })
     .text(44, 78, [
-      { text: track.title, font: 'display', size: 54, fill: t.fg },
+      { text: track.title, font: 'display', size: 64, fill: t.fg },
       ...(track.tag
         ? [{ text: `(${track.tag})`, font: 'body' as const, size: 17, fill: t.muted, gap: 14 }]
         : []),
@@ -143,7 +137,7 @@ function renderTrack(track: Track, number: number, stats: Stats, now: Date, t: T
 function renderClosedTrack(track: ClosedSourceTrack, t: Theme): Canvas {
   return new Canvas(WIDTH, 96, `${track.title}: ${track.description}`)
     .rect(0, 0, WIDTH, 1, t.hairline)
-    .text(44, 42, { text: track.title, font: 'display', size: 26, fill: t.fg })
+    .text(44, 42, { text: track.title, font: 'display', size: 30, fill: t.fg })
     .text(44, 71, { text: track.description, font: 'body', size: 17, fill: t.soft })
     .text(WIDTH, 42, { text: '—', font: 'mono', size: 19, fill: t.muted }, 'end')
 }
@@ -196,7 +190,7 @@ function renderDiscography(stats: Stats, t: Theme): Canvas {
     canvas.text(+(i * step).toFixed(2), HEAD_HEIGHT + 44, {
       text: total.toLocaleString('en'),
       font: 'display',
-      size: 34,
+      size: 44,
       fill: year === latest ? t.accentText : t.fg,
     })
     canvas.text(+(i * step).toFixed(2), HEAD_HEIGHT + 74, { text: String(year), font: 'mono', size: 14, fill: t.muted })
@@ -225,13 +219,13 @@ function renderCredits(t: Theme): Canvas {
   const widths = [3, 1, 2, 1, 4, 2, 1, 3, 1, 1, 2, 4, 1, 2, 3, 1, 2, 1, 3, 2, 1, 4, 1, 2]
   const left = WIDTH - 124
   const top = HEAD_HEIGHT + 2
-  canvas.rect(left, top, 124, 92, '#EFE9DC')
+  canvas.rect(left, top, 124, 92, PAPER)
   let x = left + 12
   widths.forEach((w, i) => {
-    if (i % 2 === 0) canvas.rect(x, top + 10, w * 2, 52, '#1E1030')
+    if (i % 2 === 0) canvas.rect(x, top + 10, w * 2, 52, INK)
     x += w * 2
   })
-  canvas.text(left + 12, top + 82, { text: 'RS-2018', font: 'mono', size: 13, fill: '#1E1030' })
+  canvas.text(left + 12, top + 82, { text: 'RS-2018', font: 'mono', size: 13, fill: INK })
   return canvas
 }
 
