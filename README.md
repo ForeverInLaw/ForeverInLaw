@@ -19,7 +19,7 @@
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/hours-light.svg" /><img src="assets/hours-dark.svg" alt="Studio hours: commits by hour of day, busiest late at night" width="100%" /></picture>
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/discography-light.svg" /><img src="assets/discography-dark.svg" alt="Discography: 2022: 72, 2023: 45, 2024: 27, 2025: 963, 2026: 5248" width="100%" /></picture>
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/outtakes-light.svg" /><img src="assets/outtakes-dark.svg" alt="Outtakes: fix(persistence): stop the test suite from destroying the real DEK; docs(changelog): stop claiming the telemetry default changed in 0.6.9; fix(core): a send the relay never tried is re-routed, not failed; feat(dm): one moss node, a proven status, and a text that never fails" width="100%" /></picture>
-<picture><source media="(prefers-color-scheme: light)" srcset="assets/credits-light.svg" /><img src="assets/credits-dark.svg" alt="Written and produced by Sergei. moss, flucord and g3 with Andy (Rxflex). Guest appearance on qeeqbox/social-analyzer (24.4k stars), for one package-lock.json." width="100%" /></picture>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/credits-light.svg" /><img src="assets/credits-dark.svg" alt="Written and produced by Sergei. moss, flucord and g3 with Andy (Rxflex). Guest appearance on qeeqbox/social-analyzer (24.4k stars), for one exclamation mark." width="100%" /></picture>
 </p>
 
 <p>

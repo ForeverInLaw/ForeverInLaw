@@ -106,7 +106,7 @@ export const CREDITS = [
   'Written and produced by Sergei.',
   'moss, flucord and g3 with Andy (Rxflex).',
   'Guest appearance on qeeqbox/social-analyzer (24.4k stars),',
-  'for one package-lock.json.',
+  'for one exclamation mark.',
 ] as const
 
 export const NOW_PLAYING_URL = 'https://spotify-now-playing.foreverinlaw.workers.dev/now-playing.svg'
