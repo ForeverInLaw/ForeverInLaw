@@ -22,8 +22,4 @@
 <picture><source media="(prefers-color-scheme: light)" srcset="assets/credits-light.svg" /><img src="assets/credits-dark.svg" alt="Written and produced by Sergei. moss, flucord and g3 with Andy (Rxflex). Guest appearance on qeeqbox/social-analyzer (24.4k stars), for one package-lock.json." width="100%" /></picture>
 </p>
 
-<p>
-<a href="https://zaebal.dev"><picture><source media="(prefers-color-scheme: light)" srcset="https://spotify-now-playing.foreverinlaw.workers.dev/now-playing.svg?theme=light" /><img src="https://spotify-now-playing.foreverinlaw.workers.dev/now-playing.svg" alt="What Sergei is listening to on Spotify" width="100%" /></picture></a>
-</p>
-
 [zaebal.dev](https://zaebal.dev) · [@nevermorelove](https://t.me/nevermorelove) · [x@c0.md](mailto:x@c0.md)

@@ -109,8 +109,6 @@ export const CREDITS = [
   'for one package-lock.json.',
 ] as const
 
-export const NOW_PLAYING_URL = 'https://spotify-now-playing.foreverinlaw.workers.dev/now-playing.svg'
-
 export const CONTACTS = [
   { label: 'zaebal.dev', href: 'https://zaebal.dev' },
   { label: '@nevermorelove', href: 'https://t.me/nevermorelove' },
