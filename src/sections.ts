@@ -198,7 +198,8 @@ function renderWeeks(stats: Stats, theme: ThemeName, layout: LayoutName): Canvas
 
   // Every year as a bar on the project rows' grid, so the quiet years and the jump both stay visible.
   const maxYear = Math.max(...stats.years.map((y) => y.total), 1)
-  const barX = wide ? 440 : margin + 56
+  // Narrow leaves room for the longest label, "2026 so far" (11 chars at 15px).
+  const barX = wide ? 440 : margin + 112
   const barCell = wide ? 9.4 : (width - margin - 60 - barX) / BAR_CELLS
   const current = stats.years.at(-1)?.year
   stats.years.forEach(({ year, total }, i) => {
