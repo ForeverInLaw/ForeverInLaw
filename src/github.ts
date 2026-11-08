@@ -1,5 +1,5 @@
 import { Octokit } from 'octokit'
-import { FIRST_DISCOGRAPHY_YEAR, LOGIN, TRACKS, UTC_OFFSET, type Track } from './content.ts'
+import { FIRST_YEAR, LOGIN, TRACKS, UTC_OFFSET, type Track } from './content.ts'
 
 export interface TrackStats {
   commits: number
@@ -14,8 +14,6 @@ export interface YearTotal {
 
 export interface Stats {
   tracks: ReadonlyMap<Track, TrackStats>
-  /** One commit is one second of the record. */
-  runtimeSeconds: number
   weeks: readonly number[]
   firstDay: Date
   lastDay: Date
@@ -120,8 +118,8 @@ export async function fetchStats(token: string): Promise<Stats> {
   const octokit = new Octokit({ auth: token })
   const currentYear = new Date().getUTCFullYear()
   const yearList = Array.from(
-    { length: currentYear - FIRST_DISCOGRAPHY_YEAR + 1 },
-    (_, i) => FIRST_DISCOGRAPHY_YEAR + i,
+    { length: currentYear - FIRST_YEAR + 1 },
+    (_, i) => FIRST_YEAR + i,
   )
 
   const [commitDates, days, totals, publicThisYear] = await Promise.all([
@@ -153,7 +151,6 @@ export async function fetchStats(token: string): Promise<Stats> {
 
   return {
     tracks,
-    runtimeSeconds: [...tracks.values()].reduce((sum, t) => sum + t.commits, 0),
     weeks: chunkWeeks(days.map((d) => d.count)),
     firstDay: new Date(firstDay.date),
     lastDay: new Date(lastDay.date),

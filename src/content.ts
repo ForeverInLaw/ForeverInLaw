@@ -1,65 +1,30 @@
-// Editorial content of the record. Everything numeric comes from src/github.ts.
+// Editorial content of the profile. Everything numeric comes from src/github.ts.
 
 export const LOGIN = 'ForeverInLaw'
-export const FIRST_DISCOGRAPHY_YEAR = 2022
+export const FIRST_YEAR = 2022
 export const NIGHT_HOURS = new Set([22, 23, 0, 1, 2, 3])
 export const UTC_OFFSET = 2
+
+export const ROLE = 'co-founder of redstone.md'
+export const BIO = ['Networking, encrypted chat, web apps', 'and bots, mostly closed source.'] as const
 
 export interface Track {
   title: string
   owner: string
   repo: string
-  tag?: string
   description: string
-  stack: string
+  /** Stack and credits, shown after the active period. */
+  notes: string
 }
 
-export const SIDE_A: readonly Track[] = [
-  {
-    title: 'mosh',
-    owner: 'redstone-md',
-    repo: 'mosh-flutter',
-    description: 'Encrypted desktop messenger on moss',
-    stack: 'dm, core, calls',
-  },
-  {
-    title: 'shield',
-    owner: 'redstone-md',
-    repo: 'shield',
-    tag: 'tg-spam remix',
-    description: 'Telegram moderation, heuristics before LLM',
-    stack: 'Go',
-  },
+/** Open-source work. The README ranks it by commits, so order here does not matter. */
+export const TRACKS: readonly Track[] = [
+  { title: 'mosh', owner: 'redstone-md', repo: 'mosh-flutter', description: 'Encrypted desktop messenger on moss', notes: 'dm, core, calls' },
+  { title: 'shield', owner: 'redstone-md', repo: 'shield', description: 'Telegram moderation, heuristics before LLM', notes: 'Go · tg-spam remix' },
+  { title: 'flucord', owner: 'redstone-md', repo: 'flucord', description: 'Native Discord client in Flutter, no WebView', notes: 'Dart, C++ · with Rxflex' },
+  { title: 'moss', owner: 'redstone-md', repo: 'moss', description: 'Embeddable P2P mesh core in Go', notes: 'Go · with Rxflex' },
+  { title: 'g3', owner: 'redstone-md', repo: 'g3', description: 'S3-compatible storage on Google Drive', notes: 'TypeScript, Go · with Rxflex' },
 ]
-
-export const SIDE_B: readonly Track[] = [
-  {
-    title: 'flucord',
-    owner: 'redstone-md',
-    repo: 'flucord',
-    tag: 'feat. Rxflex',
-    description: 'Native Discord client in Flutter, no WebView',
-    stack: 'Dart, C++',
-  },
-  {
-    title: 'moss',
-    owner: 'redstone-md',
-    repo: 'moss',
-    tag: 'feat. Rxflex',
-    description: 'Embeddable P2P mesh core in Go',
-    stack: 'Go',
-  },
-  {
-    title: 'g3',
-    owner: 'redstone-md',
-    repo: 'g3',
-    tag: 'feat. Rxflex',
-    description: 'S3-compatible storage on Google Drive',
-    stack: 'TypeScript, Go',
-  },
-]
-
-export const TRACKS: readonly Track[] = [...SIDE_A, ...SIDE_B]
 
 export interface ClosedSourceTrack {
   title: string
@@ -67,32 +32,12 @@ export interface ClosedSourceTrack {
   description: string
 }
 
-export const SIDE_C: readonly ClosedSourceTrack[] = [
-  {
-    title: 'Launch VPN',
-    slug: 'launch-vpn',
-    description: 'Subscriber portal with payments, promo codes and device controls',
-  },
-  {
-    title: 'CustomerAI',
-    slug: 'customerai',
-    description: 'Visual editor for AI support flows, with handover to a human',
-  },
-  {
-    title: 'Balansear',
-    slug: 'balansear',
-    description: "Authoritative DNS that routes by the client's ASN and location",
-  },
-  {
-    title: 'Trellis',
-    slug: 'owork365',
-    description: 'Field-service platform with a Gantt schedule and a mobile portal',
-  },
-  {
-    title: 'Reed',
-    slug: 'crooked-arm-s-tma',
-    description: 'Telegram Mini App for support tickets',
-  },
+export const CLOSED_SOURCE: readonly ClosedSourceTrack[] = [
+  { title: 'Launch VPN', slug: 'launch-vpn', description: 'Subscriber portal with payments, promo codes and device controls' },
+  { title: 'CustomerAI', slug: 'customerai', description: 'Visual editor for AI support flows, with handover to a human' },
+  { title: 'Balansear', slug: 'balansear', description: "Authoritative DNS that routes by the client's ASN and location" },
+  { title: 'Trellis', slug: 'owork365', description: 'Field-service platform with a Gantt schedule and a mobile portal' },
+  { title: 'Reed', slug: 'crooked-arm-s-tma', description: 'Telegram Mini App for support tickets' },
 ]
 
 export const OUTTAKES = [
@@ -103,16 +48,23 @@ export const OUTTAKES = [
 ] as const
 
 export const CREDITS = [
-  'Written and produced by Sergei.',
-  'moss, flucord and g3 with Andy (Rxflex).',
-  'Guest appearance on qeeqbox/social-analyzer (24.4k stars),',
-  'for one exclamation mark.',
+  'Written by Sergei. moss, flucord and g3 with Andy (Rxflex).',
+  'Guest commit on qeeqbox/social-analyzer (24.4k stars): one exclamation mark.',
 ] as const
 
 export const NOW_PLAYING_URL = 'https://spotify-now-playing.foreverinlaw.workers.dev/now-playing.svg'
 
-export const CONTACTS = [
-  { label: 'zaebal.dev', href: 'https://zaebal.dev' },
-  { label: '@nevermorelove', href: 'https://t.me/nevermorelove' },
-  { label: 'x@c0.md', href: 'mailto:x@c0.md' },
-] as const
+export interface Contact {
+  /** Short label set before the value on the chip. */
+  kind: string
+  label: string
+  href: string
+}
+
+/** The first contact is the primary door: the cover links to it and its command sits on the cover. */
+export const CONTACTS: readonly Contact[] = [
+  { kind: 'tg', label: '@nevermorelove', href: 'https://t.me/nevermorelove' },
+  { kind: 'mail', label: 'x@c0.md', href: 'mailto:x@c0.md' },
+  { kind: 'web', label: 'zaebal.dev', href: 'https://zaebal.dev' },
+  { kind: 'gh', label: 'redstone-md', href: 'https://github.com/redstone-md' },
+]
