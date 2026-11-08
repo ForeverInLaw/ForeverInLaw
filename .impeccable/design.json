@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-08T23:30:00Z",
+  "title": "Design System: ForeverInLaw",
+  "extensions": {
+    "colorMeta": {
+      "stone-primary": { "role": "neutral", "displayName": "Bone", "canonical": "#e6e5e4", "tonalRamp": ["#1f1c19", "#35302b", "#4f4943", "#6f685e", "#8c857b", "#b8b1a9", "#d6d2cd", "#e6e5e4"] },
+      "stone-secondary": { "role": "neutral", "displayName": "Ash", "canonical": "#b8b1a9", "tonalRamp": ["#1f1c19", "#35302b", "#4f4943", "#6f685e", "#8c857b", "#b8b1a9", "#d6d2cd", "#e6e5e4"] },
+      "stone-dim": { "role": "neutral", "displayName": "Dust", "canonical": "#8c857b", "tonalRamp": ["#1f1c19", "#35302b", "#4f4943", "#6f685e", "#8c857b", "#b8b1a9", "#d6d2cd", "#e6e5e4"] },
+      "stone-faint": { "role": "neutral", "displayName": "Shadow Stone", "canonical": "#4f4943", "tonalRamp": ["#1f1c19", "#35302b", "#4f4943", "#6f685e", "#8c857b", "#b8b1a9", "#d6d2cd", "#e6e5e4"] },
+      "amber": { "role": "primary", "displayName": "Peak Amber", "canonical": "#ffb43a", "tonalRamp": ["#3a1f04", "#5c3107", "#8f4a0a", "#b86812", "#e08c1f", "#ffb43a", "#ffcf80", "#ffebc6"] },
+      "stone-primary-light": { "role": "neutral", "displayName": "Bone (light theme)", "canonical": "#2d2824", "tonalRamp": ["#1f1c19", "#2d2824", "#5d564e", "#6f685e", "#8c857b", "#c9c3bb", "#e0dcd6", "#f3f1ee"] },
+      "stone-secondary-light": { "role": "neutral", "displayName": "Ash (light theme)", "canonical": "#5d564e", "tonalRamp": ["#1f1c19", "#2d2824", "#5d564e", "#6f685e", "#8c857b", "#c9c3bb", "#e0dcd6", "#f3f1ee"] },
+      "stone-dim-light": { "role": "neutral", "displayName": "Dust (light theme)", "canonical": "#6f685e", "tonalRamp": ["#1f1c19", "#2d2824", "#5d564e", "#6f685e", "#8c857b", "#c9c3bb", "#e0dcd6", "#f3f1ee"] },
+      "stone-faint-light": { "role": "neutral", "displayName": "Shadow Stone (light theme)", "canonical": "#c9c3bb", "tonalRamp": ["#1f1c19", "#2d2824", "#5d564e", "#6f685e", "#8c857b", "#c9c3bb", "#e0dcd6", "#f3f1ee"] },
+      "amber-light": { "role": "primary", "displayName": "Peak Amber (light theme)", "canonical": "#8f4a0a", "tonalRamp": ["#3a1f04", "#5c3107", "#8f4a0a", "#b86812", "#e08c1f", "#ffb43a", "#ffcf80", "#ffebc6"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Project titles in the open-source list." },
+      "headline": { "displayName": "Headline", "purpose": "Handle under the name; per-project commit counts." },
+      "title": { "displayName": "Title", "purpose": "Prompts, section headers, closed-source titles, cover command, chip labels." },
+      "body": { "displayName": "Body", "purpose": "Descriptions, bio, outtakes and credits; 21-22px line pitch." },
+      "label": { "displayName": "Label", "purpose": "Narrow-layout metadata, axis labels, peak-week marker." }
+    },
+    "shadows": [
+      { "name": "phosphor-glow", "value": "filter: drop-shadow(0 0 2.5px rgb(230 229 228 / .22))", "purpose": "Soft glow on character grids, dark theme only." }
+    ],
+    "motion": [
+      { "name": "scan-reveal", "value": "animation: scan .5s both cubic-bezier(.16,1,.3,1); from { opacity: 0; transform: translateY(-3px) }; 15ms per-row stagger", "purpose": "Glyph portrait rows resolve top to bottom on load." },
+      { "name": "cursor-blink", "value": "animation: blink 1.06s steps(1) infinite; 50% { opacity: 0 }", "purpose": "Block cursor after the cover command." },
+      { "name": "reduced-motion", "value": "@media (prefers-reduced-motion: reduce) { * { animation: none !important } }", "purpose": "Every animated slice ships this override." }
+    ],
+    "breakpoints": [
+      { "name": "narrow", "value": "max-width: 600px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Contact Chip",
+      "kind": "chip",
+      "refersTo": "contact-chip",
+      "description": "Fixed-height linked contact image; kind prefix in ash, label in bone.",
+      "html": "<a class=\"ds-chip\" href=\"#\"><span class=\"ds-chip-kind\">tg</span> <span class=\"ds-chip-label\">@nevermorelove</span></a>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 0; height: 36px; padding: 0 14px; border: 1px solid #4f4943; border-radius: 0; background: #0d1117; font-family: 'JetBrains Mono', monospace; font-size: 15px; text-decoration: none; white-space: pre; } .ds-chip-kind { color: #b8b1a9; font-weight: 400; } .ds-chip-label { color: #e6e5e4; font-weight: 800; } .ds-chip:hover, .ds-chip:focus-visible { border-color: #8c857b; outline: none; }"
+    },
+    {
+      "name": "Section Header",
+      "kind": "nav",
+      "refersTo": "section-header",
+      "description": "Shell prompt as a section title, note right-aligned.",
+      "html": "<div class=\"ds-header\"><span class=\"ds-header-prompt\">~/src $ ls -l</span><span class=\"ds-header-note\">open source, by commits</span></div>",
+      "css": ".ds-header { display: flex; justify-content: space-between; align-items: baseline; width: 776px; padding: 18px 32px 0; height: 52px; background: #0d1117; font-family: 'JetBrains Mono', monospace; font-size: 15px; } .ds-header-prompt { color: #e6e5e4; font-weight: 800; } .ds-header-note { color: #b8b1a9; font-weight: 400; }"
+    },
+    {
+      "name": "Track Row",
+      "kind": "card",
+      "refersTo": "track-title-top",
+      "description": "Project row: permission column, display title (amber when top-ranked), burn bar, count, description, metadata.",
+      "html": "<div class=\"ds-track\"><span class=\"ds-perm\">drwxr-xr-x</span><span class=\"ds-title ds-title-top\">mosh</span><span class=\"ds-bar\">@@@@@%%%%%######*****<i>.........</i></span><span class=\"ds-count\">1,655</span><p class=\"ds-desc\">Encrypted desktop messenger on moss</p><p class=\"ds-meta\">May-Nov 2026 · dm, core, calls</p></div>",
+      "css": ".ds-track { display: grid; grid-template-columns: 108px 300px 282px 1fr; align-items: baseline; padding: 20px 32px; background: #0d1117; font-family: 'JetBrains Mono', monospace; font-size: 15px; color: #e6e5e4; } .ds-perm { color: #b8b1a9; } .ds-title { font-size: 32px; font-weight: 800; color: #e6e5e4; } .ds-title-top { color: #ffb43a; } .ds-bar { white-space: pre; color: #e6e5e4; } .ds-bar i { font-style: normal; color: #4f4943; } .ds-count { text-align: right; font-size: 20px; font-weight: 800; } .ds-desc, .ds-meta { grid-column: 2 / 5; margin: 4px 0 0; } .ds-meta { color: #b8b1a9; }"
+    },
+    {
+      "name": "Burn Bar",
+      "kind": "custom",
+      "refersTo": "burn-bar",
+      "description": "Value as 30 cells burning from the densest glyph down, over a faint dotted track.",
+      "html": "<div class=\"ds-burn\"><span class=\"p\">@@@@%%</span><span class=\"s\">%%###</span><span class=\"d\">**++</span><span class=\"f\">...............</span></div>",
+      "css": ".ds-burn { font-family: 'JetBrains Mono', monospace; font-size: 15.7px; white-space: pre; background: #0d1117; padding: 8px; display: inline-block; filter: drop-shadow(0 0 2.5px rgb(230 229 228 / .22)); } .ds-burn .p { color: #e6e5e4; } .ds-burn .s { color: #b8b1a9; } .ds-burn .d { color: #8c857b; } .ds-burn .f { color: #4f4943; }"
+    },
+    {
+      "name": "Ridge Chart",
+      "kind": "custom",
+      "description": "Glyph columns with a crest; hot columns burn amber at the top three rows.",
+      "html": "<pre class=\"ds-ridge\"><b>@@</b>    \n<b>%%</b>  @@\n<b>##</b>  %%\n**  ##\n++  **\n==  ++</pre>",
+      "css": ".ds-ridge { margin: 0; padding: 8px; background: #0d1117; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 9px; color: #b8b1a9; } .ds-ridge b { color: #ffb43a; font-weight: 400; }"
+    },
+    {
+      "name": "Cover Command",
+      "kind": "custom",
+      "description": "Cover call to action as a shell command with a blinking block cursor.",
+      "html": "<div class=\"ds-cmd\">~ $ open t.me/nevermorelove<span class=\"ds-cursor\"></span></div>",
+      "css": ".ds-cmd { padding: 12px 32px; background: #0d1117; color: #e6e5e4; font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 800; } .ds-cursor { display: inline-block; width: 9px; height: 16px; margin-left: 4px; vertical-align: -2px; background: #e6e5e4; animation: ds-blink 1.06s steps(1) infinite; } @keyframes ds-blink { 50% { opacity: 0; } } @media (prefers-reduced-motion: reduce) { .ds-cursor { animation: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Phosphor Grid",
+    "overview": "Everything on the profile is one monospace character grid, and glyph density stands in for light. The avatar, the name, the per-project bars, the year of contributions and the hours of the day are all drawn from the same ten-step ramp (` .:-=+*#%@`). There are no solid fills, no charts in the dashboard sense, and no badges: a value is shown as how densely a run of characters burns. The terminal idiom (prompts like `~/src $ ls -l`, `drwxr-xr-x` permission columns, `cat` blocks, a blinking cursor) is the native grammar of the world, not decoration on top of it.\n\nThe palette is stone sampled from the avatar plus a single amber reserved for data peaks. The surface is GitHub's README column, which strips CSS and JS, so every visual is a generated SVG slice stacked full-width, each with its own subset of JetBrains Mono inlined. Neither theme paints a ground: the slices are transparent and ink sits directly on GitHub's own page colour (dark #0d1117, light white), because GitHub leaves a gap of page colour between stacked images and any painted slab would show a seam under every slice.\n\nThe same system is consumed outside this repo by the Spotify now-playing card (`D:\\bprojects\\me\\worker\\spotify-now-playing.js`), which closes the README: same stone and amber tiers, same ramp, a glyph-rendered album cover, JetBrains Mono inlined, and the same 840/420 wide/narrow widths and margins.",
+    "keyCharacteristics": [
+      "One luminance ramp draws portrait, letterforms, bars and charts.",
+      "Stone in four reading tiers, amber only on data peaks.",
+      "One typeface, JetBrains Mono, at two weights (400, 800).",
+      "Transparent slices over GitHub's page colour in both themes.",
+      "Two layouts per slice: 840 wide, 420 narrow, swapped by `<picture>` media.",
+      "Terminal prompts as section headers, square 1px frames, no radius."
+    ],
+    "rules": [
+      { "name": "The Peak-Only Amber Rule", "body": "Amber marks a data peak and nothing else: the top-ranked project, the current year, the spike week, the night hours. If it is not a peak in real data, it is stone.", "section": "colors" },
+      { "name": "The No-Ground Rule", "body": "Slices are transparent in both themes. Ink sits on GitHub's own page colour; never paint a background slab, it seams between stacked images.", "section": "colors" },
+      { "name": "The Density-Is-Tier Rule", "body": "Glyph density maps to stone tier (ramp 0-2 faint, 3-4 dim, 5-6 secondary, 7-9 primary). Denser glyph, brighter tier.", "section": "colors" },
+      { "name": "The One Face Rule", "body": "JetBrains Mono only, 400 and 800. Hierarchy comes from size, weight and stone tier, never a second family.", "section": "typography" },
+      { "name": "The Line Budget Rule", "body": "Text wraps greedily to the monospace character budget of its column (`floor(width / (size x 0.6))`), never by measured pixels.", "section": "typography" },
+      { "name": "The Glow-Is-Dark-Only Rule", "body": "Phosphor glow belongs to ink on a dark screen. Light theme is ink on paper and carries no glow.", "section": "elevation" }
+    ],
+    "dos": [
+      "**Do** draw every quantity from the ramp ` .:-=+*#%@`, mapping density to stone tier.",
+      "**Do** keep amber for real data peaks: top project, current year, spike week, night hours.",
+      "**Do** render every slice in both layouts (840/32 and 420/20) and both themes.",
+      "**Do** leave slices transparent so ink sits on GitHub's page colour.",
+      "**Do** use shell idiom (prompts, permission columns, `cat`) for section structure.",
+      "**Do** inline only the glyphs a slice uses, as a JetBrains Mono woff2 subset."
+    ],
+    "donts": [
+      "**Don't** use solid fills for bars, charts or letterforms; build them from glyph runs.",
+      "**Don't** paint a background in either theme.",
+      "**Don't** use amber for emphasis, links or decoration.",
+      "**Don't** introduce a second typeface or corner radius.",
+      "**Don't** add badge or stats-card images; every number is a fetched value drawn in the grid.",
+      "**Don't** apply the phosphor glow in the light theme."
+    ]
+  }
+}
