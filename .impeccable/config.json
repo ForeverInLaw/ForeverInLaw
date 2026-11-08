@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/watch-log.html"
+        ],
+        "createdAt": "2026-11-08T22:21:53.477Z",
+        "reason": "agent: unchosen direction-round mock, gitignored; its fonts belong to that rejected world, not to DESIGN.md"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/departures.html"
+        ],
+        "createdAt": "2026-11-08T22:21:53.732Z",
+        "reason": "agent: unchosen direction-round mock, gitignored; its fonts belong to that rejected world, not to DESIGN.md"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/night-panel.html"
+        ],
+        "createdAt": "2026-11-08T22:21:54.009Z",
+        "reason": "agent: unchosen direction-round mock, gitignored; its fonts belong to that rejected world, not to DESIGN.md"
+      }
+    ]
+  }
+}
