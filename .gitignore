@@ -1,2 +1,8 @@
 node_modules/
 preview.html
+.impeccable/tmp/
+.impeccable/mocks/
+.impeccable/review/
+.impeccable/live/
+.impeccable/questions/
+.impeccable/hook.cache.json
