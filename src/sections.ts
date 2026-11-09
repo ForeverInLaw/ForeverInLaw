@@ -255,7 +255,9 @@ function renderLog(theme: ThemeName, layout: LayoutName): Canvas {
     }
     y += 28
   }
-  const slice = sliceCanvas(layout, t, y - 20, `Outtakes: ${OUTTAKES.join('; ')}. ${CREDITS.join(' ')}`)
+  // Ends 34px short of the next title: the now-playing card below opens with its own 34px
+  // baseline, so the gap to it matches the gap between these blocks.
+  const slice = sliceCanvas(layout, t, y - 34, `Outtakes: ${OUTTAKES.join('; ')}. ${CREDITS.join(' ')}`)
   for (const line of lines) slice.text(margin, line.y, line.run)
   return slice
 }
